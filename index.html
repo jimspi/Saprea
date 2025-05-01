@@ -6,15 +6,8 @@
   <title>Saprea Business Ally</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #fdf9f6;
-      color: #3a3a3a;
-    }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: #fdf9f6; color: #3a3a3a; }
     header {
       position: relative;
       overflow: hidden;
@@ -30,11 +23,6 @@
       50% { background-position: 0% center; }
       100% { background-position: 200% center; }
     }
-    header img {
-      height: 60px;
-      margin-bottom: 1rem;
-      animation: fadeIn 1s ease-out;
-    }
     header h1 {
       margin: 0;
       font-size: 2.5rem;
@@ -46,14 +34,8 @@
       margin: 1rem auto 0;
       animation: fadeIn 1.5s ease-out;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideIn {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     main {
       max-width: 750px;
       margin: 4rem auto;
@@ -67,19 +49,9 @@
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #5C9154;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-    }
-    label {
-      font-weight: 600;
-      margin-top: 1rem;
-    }
+    h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #5C9154; }
+    form { display: flex; flex-direction: column; }
+    label { font-weight: 600; margin-top: 1rem; }
     input, textarea, select {
       margin-top: 0.5rem;
       padding: 0.75rem;
@@ -87,14 +59,8 @@
       border: 1px solid #ccc;
       border-radius: 6px;
     }
-    .checkboxes {
-      display: flex;
-      flex-direction: column;
-      margin-top: 0.5rem;
-    }
-    .checkboxes label {
-      font-weight: 400;
-    }
+    .checkboxes { display: flex; flex-direction: column; margin-top: 0.5rem; }
+    .checkboxes label { font-weight: 400; }
     button {
       margin-top: 2rem;
       padding: 1rem;
@@ -106,15 +72,8 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #497444;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #777;
-    }
+    button:hover { background-color: #497444; }
+    footer { text-align: center; padding: 2rem 1rem; font-size: 0.9rem; color: #777; }
   </style>
 </head>
 <body>
@@ -127,6 +86,8 @@
   <main>
     <h2>Tell Us How You Can Help</h2>
     <form id="allyForm" action="https://formspree.io/f/xnndjyda" method="POST">
+      <input type="hidden" name="_gotcha" style="display:none">
+
       <label for="name">Full Name</label>
       <input type="text" id="name" name="name" required>
 
@@ -159,22 +120,45 @@
 
       <label>Ways I’d Like to Support</label>
       <div class="checkboxes">
-        <label><input type="checkbox" name="help" value="Donations"> Financial sponsorship or donations</label>
-        <label><input type="checkbox" name="help" value="Awareness"> Share Saprea’s message on my platforms</label>
-        <label><input type="checkbox" name="help" value="Events"> Host a fundraiser or awareness event</label>
-        <label><input type="checkbox" name="help" value="Service"> Offer pro bono or discounted services</label>
-        <label><input type="checkbox" name="help" value="Employees"> Provide wellness resources to employees</label>
-        <label><input type="checkbox" name="help" value="Other"> Other</label>
+        <label><input type="checkbox" name="help[]" value="Donations"> Financial sponsorship or donations</label>
+        <label><input type="checkbox" name="help[]" value="Awareness"> Share Saprea’s message on my platforms</label>
+        <label><input type="checkbox" name="help[]" value="Events"> Host a fundraiser or awareness event</label>
+        <label><input type="checkbox" name="help[]" value="Service"> Offer pro bono or discounted services</label>
+        <label><input type="checkbox" name="help[]" value="Employees"> Provide wellness resources to employees</label>
+        <label><input type="checkbox" name="help[]" value="Other"> Other</label>
       </div>
 
       <label for="more">Describe your ideas or offerings (optional)</label>
       <textarea id="more" name="more" rows="4"></textarea>
 
       <button type="submit">Submit My Support</button>
+    <p id="thankYouMessage" style="display:none; color:#5C9154; font-weight:600; margin-top:2rem;">Thank you for your support! We'll be in touch soon.</p>
     </form>
   </main>
   <footer>
     &copy; 2025 Saprea. Business Ally Program. United to Heal. United to Act.
   </footer>
+<script>
+  document.getElementById('allyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        document.getElementById('thankYouMessage').style.display = 'block';
+      } else {
+        alert('There was a problem submitting your form.');
+      }
+    }).catch(error => {
+      alert('Submission failed. Please try again later.');
+    });
+  });
+</script>
 </body>
 </html>
