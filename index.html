@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saprea Business Ally</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fdf9f6;
+      color: #3a3a3a;
+    }
+    header {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(120deg, #5C9154 0%, #6bb77b 50%, #5C9154 100%);
+      background-size: 200% auto;
+      color: white;
+      padding: 4rem 1rem 5rem;
+      text-align: center;
+      animation: waveGradient 6s ease-in-out infinite;
+    }
+    @keyframes waveGradient {
+      0% { background-position: 200% center; }
+      50% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    header img {
+      height: 60px;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      animation: slideIn 1s ease-out forwards;
+    }
+    header p {
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 1rem auto 0;
+      animation: fadeIn 1.5s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    main {
+      max-width: 750px;
+      margin: 4rem auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      animation: floatUp 1s ease-in;
+    }
+    @keyframes floatUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #5C9154;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    input, textarea, select {
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .checkboxes {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0.5rem;
+    }
+    .checkboxes label {
+      font-weight: 400;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #5C9154;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #497444;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://saprea.org/themes/saprea/dist/images/logos/saprea-logo-white.svg" alt="Saprea Logo">
+    <h1>Business Ally Program</h1>
+    <p>
+      At Saprea, we believe the business community has the power to create change. Your influence, skills, and services can help us liberate individuals and society from child sexual abuse. This is your invitation to act.
+    </p>
+  </header>
+  <main>
+    <h2>Tell Us How You Can Help</h2>
+    <form id="allyForm" action="https://formspree.io/f/xnndjyda" method="POST">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+      <label for="business">Business Name</label>
+      <input type="text" id="business" name="business" required>
+      <label for="title">Role/Title</label>
+      <input type="text" id="title" name="title">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required>
+      <label for="phone">Phone (optional)</label>
+      <input type="tel" id="phone" name="phone">
+      <label for="website">Business Website</label>
+      <input type="url" id="website" name="website">
+      <label for="industry">Industry</label>
+      <select id="industry" name="industry">
+        <option>Media & Communications</option>
+        <option>Finance & Consulting</option>
+        <option>Hospitality & Events</option>
+        <option>Healthcare & Wellness</option>
+        <option>Retail</option>
+        <option>Technology</option>
+        <option>Education</option>
+        <option>Other</option>
+      </select>
+      <label>Ways I’d Like to Support</label>
+      <div class="checkboxes">
+        <label><input type="checkbox" name="help" value="Donations"> Financial sponsorship or donations</label>
+        <label><input type="checkbox" name="help" value="Awareness"> Share Saprea’s message on my platforms</label>
+        <label><input type="checkbox" name="help" value="Events"> Host a fundraiser or awareness event</label>
+        <label><input type="checkbox" name="help" value="Service"> Offer pro bono or discounted services</label>
+        <label><input type="checkbox" name="help" value="Employees"> Provide wellness resources to employees</label>
+        <label><input type="checkbox" name="help" value="Other"> Other</label>
+      </div>
+      <label for="more">Describe your ideas or offerings (optional)</label>
+      <textarea id="more" name="more" rows="4"></textarea>
+      <button type="submit">Submit My Support</button>
+    </form>
+  </main>
+  <footer>
+    &copy; 2025 Saprea. Business Ally Program. United to Heal. United to Act.
+  </footer>
+</body>
+</html>
