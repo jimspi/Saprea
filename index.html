@@ -48,37 +48,18 @@
         }
 
         .logo-symbol {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #2D4A3E 0%, #4A7A5C 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .logo-symbol::before {
-            content: '';
-            width: 20px;
-            height: 20px;
-            background: #E8F5E8;
-            border-radius: 50%;
-            position: absolute;
-        }
-
-        .logo-symbol::after {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #FFD700;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
+.logo-symbol img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
         .logo-text {
             font-size: 28px;
             font-weight: bold;
@@ -448,7 +429,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-symbol"></div>
+                    <div class="logo-symbol">
+    <img src="./assets/saprea-logo.png" alt="Saprea Logo" />
+</div>
                     <div class="logo-text">Saprea</div>
                 </div>
                 <nav>
